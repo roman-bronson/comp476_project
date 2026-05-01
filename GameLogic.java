@@ -109,4 +109,23 @@ public class GameLogic {
         return payload.toString();
     }
 
+    public String getFormattedBoard() {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < board.length; i++) {
+            sb.append("-------------\n");
+            sb.append("| ");
+
+            for (int j = 0; j < board[i].length; j++) {
+                sb.append(board[i][j]).append(" | ");
+            }
+
+            sb.append("\n");
+        }
+
+        sb.append("-------------");
+
+        return sb.toString();
+    }
+
 }
