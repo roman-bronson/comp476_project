@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Client {
     public static void main(String[] args) {
-        String host = "10.40.65.92";
+        String host = "172.20.10.4";
         int port = 5000;
 
         try (
