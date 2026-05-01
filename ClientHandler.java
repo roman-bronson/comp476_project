@@ -5,9 +5,9 @@ public class ClientHandler implements Runnable {
     private Socket socket;
     private BufferedReader input;
     private PrintWriter output;
-    private String symbol;
+    private char symbol; // CHANGED: String -> char
 
-    public ClientHandler(Socket socket, String symbol) {
+    public ClientHandler(Socket socket, char symbol) {
         this.socket = socket;
         this.symbol = symbol;
 
@@ -19,7 +19,7 @@ public class ClientHandler implements Runnable {
         }
     }
 
-    public String getSymbol() {
+    public char getSymbol() {
         return symbol;
     }
 
@@ -34,8 +34,9 @@ public class ClientHandler implements Runnable {
 
             while ((message = input.readLine()) != null) {
                 //prevents messages from being sent after game ends
-                if (Server.gameOver) break;
-
+                if (Server.game.isGameOver()) {
+                    break;
+                }
                 try {
                     int move = Integer.parseInt(message);
                     Server.handleMove(this, move);
